@@ -5,6 +5,7 @@ from calc.substraction import Subtraction
 from calc.multiplication import Multiplication
 from calc.division import Division
 class Calculator:
+    # pylint: disable=unused-argument,redefined-outer-name,missing-function-docstring,line-too-long
     """ This is the Calculator class"""
     #this is the calculator static property
     history = []

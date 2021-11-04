@@ -6,7 +6,7 @@ import pytest
 
 from calculator.calculator import Calculator
 
-#this is how you define a function that will run each time you pass it to a test, it is called a fixture
+# pylint: disable=unused-argument,redefined-outer-name,missing-function-docstring
 @pytest.fixture
 def clear_history():
     Calculator.clear_history()

@@ -1,6 +1,7 @@
 """This is going to be the Calculation Object"""
 
 class Calculation:
+    # pylint: disable=too-few-public-methods
     """Calculation class """
     def __init__(self,value_a, value_b):
         """initializing value a and b"""

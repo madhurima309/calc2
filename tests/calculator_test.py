@@ -1,73 +1,42 @@
 """Testing the Calculator"""
-import pprint
 import unittest
 
 import pytest
 
-from calculator.calculator import Calculator
 
-# pylint: disable=unused-argument,redefined-outer-name,missing-function-docstring
+from calc.calculator import Calculator
+from calc.history.calculations import Calculations
 @pytest.fixture
-def clear_history():
-    Calculator.clear_history()
+def clear_history_fixture():
+    """define a function that will run each time you pass it to a test, it is called a fixture"""
+    # pylint: disable=redefined-outer-name
+    Calculations.clear_history()
+#You have to add the fixture function as a parameter to the test that you want to use it with
+def test_calculator_add_static(clear_history_fixture):
+    """testing that our calculator has a static method for addition"""
+    # pylint: disable=unused-argument,redefined-outer-name
+    assert Calculator.add_numbers(1.0,2.0,3.0) == 6.0
 
-def test_calculator_add(clear_history):
-    """Testing the Add function of the calculator"""
-    assert Calculator.add_number(1,2) == 3
-    assert Calculator.add_number(2, 2) == 4
-    assert Calculator.add_number(3, 2) == 5
-    assert Calculator.add_number(4, 2) == 6
-    assert Calculator.history_count() == 4
-    assert Calculator.get_result_of_last_calculation_added_to_history() == 6
-    pprint.pprint(Calculator.history)
+def test_calculator_subtract_static(clear_history_fixture):
+    """Testing the subtract method of the calc"""
+    # pylint: disable=unused-argument,redefined-outer-name
+    assert Calculator.subtract_numbers(1.0,2.0) == -3.0
 
-def test_clear_history(clear_history):
-    assert Calculator.add_number(1,2) == 3
-    assert Calculator.add_number(2, 2) == 4
-    assert Calculator.add_number(3, 2) == 5
-    assert Calculator.add_number(4, 2) == 6
-    assert Calculator.history_count() == 4
-    assert Calculator.clear_history() is True
-    assert Calculator.history_count() == 0
+def test_calculator_multiply_static(clear_history_fixture):
+    """Testing the subtract method of the calc"""
+    # pylint: disable=unused-argument,redefined-outer-name
+    assert Calculator.multiply_numbers(1.0,2.0) == 2.0
 
-def test_count_history(clear_history):
-    assert Calculator.history_count() == 0
-    assert Calculator.add_number(2, 2) == 4
-    assert Calculator.add_number(3, 2) == 5
-    assert Calculator.multiply_numbers(2,5) == 10
-    assert Calculator.divide_numbers(10,2) == 5
-    assert Calculator.subtract_number(10,10) ==0
-    assert Calculator.history_count() == 5
-
-def test_get_last_calculation_result(clear_history):
-    assert Calculator.add_number(2, 2) == 4
-    assert Calculator.add_number(3, 2) == 5
-    assert Calculator.multiply_numbers(-1,5) == -5
-    assert Calculator.get_result_of_last_calculation_added_to_history() == -5
-
-def test_get_first_calculation_result(clear_history):
-    assert Calculator.add_number(2, 2) == 4
-    assert Calculator.add_number(3, 2) == 5
-    assert Calculator.multiply_numbers(15, 5) == 75
-    assert Calculator.get_result_of_first_calculation_added_to_history() == 4
-
-def test_calculator_subtract(clear_history):
-    """Testing the subtract method of the calculator"""
-    assert Calculator.subtract_number(8, 2) == 6
-
-def test_calculator_multiply(clear_history):
-    """ tests multiplication of two numbers"""
-    assert Calculator.multiply_numbers(4,2) == 8
-
-def test_calculator_divide():
+def test_calculator_divide_static(clear_history_fixture):
     """Testing the divide method of the calculator"""
-    assert Calculator.divide_numbers(10,2)== 5
+	# pylint: disable=unused-argument,redefined-outer-name
+    assert Calculator.divide_numbers(10.0,2.0)== 5.0
 
 class MyTestCase(unittest.TestCase):
     """A test case is the individual unit of testing.unittest provides a base class"""
     def test_calculator_divide_by_zero(self):
         """Testing the divide method of the calculator when dividing by zero"""
         with self.assertRaises(ZeroDivisionError):
-            Calculator.divide_numbers(4,0)
+            Calculator.divide_numbers(4.0,0)
 if __name__ == '__main__':
     unittest.main()

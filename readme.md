@@ -1,5 +1,5 @@
 # Calculator Project Setup
-[![Build Status](https://app.travis-ci.com/madhurima309/calc2.svg?branch=dev2)](https://app.travis-ci.com/github/madhurima309/calc2)
+![ScreenShot](https://raw.github.com/madhurima309/calc2/dev3/build test_cov.png)
 
 To run tests, Lint, and Coverage report use this command:
 

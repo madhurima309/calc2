@@ -1,5 +1,5 @@
 """Calculation history Class"""
-
+import pandas as pd
 
 # pylint: disable=too-few-public-methods,missing-class-docstring,missing-function-docstring
 class Calculations:
@@ -25,3 +25,9 @@ class Calculations:
     def add_calculation(calculation):
         """ get a specific calculation from history"""
         return Calculations.history.append(calculation)
+    @staticmethod
+    def write_csv():
+        df = pd.DataFrame(Calculations.history)
+        df.to_csv(index=False)
+
+

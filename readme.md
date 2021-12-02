@@ -1,5 +1,5 @@
 # Calculator Project Setup
-![ScreenShot](https://raw.github.com/madhurima309/calc2/dev3/build test_cov.png)
+![ScreenShot](https://raw.github.com/madhurima309/calc2/dev3/Capture.PNG)
 
 To run tests, Lint, and Coverage report use this command:
 

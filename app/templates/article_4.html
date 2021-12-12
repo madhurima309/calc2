@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <style>
+        * {box-sizing: border-box;}
+
+        body {
+
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url(https://cdn.pixabay.com/photo/2017/02/18/01/26/background-2076334_1280.jpg);
+            background-size: cover;
+            height: 100%;
+
+
+        }
+
+        .footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: black;
+            text-align: center;
+        }
+        @media screen and (max-width: 650px) {
+            .nav,  .footer, .para1, .image, .container-fluid, .para0{
+                width: 100%;
+                display: block;
+                flex-direction: column;
+            }
+        }
+
+
+.container-fluid{
+    background-color: black;
+}
+
+        .image {
+            padding-left: 25px;
+            width: 90%;
+
+        }
+        .al{
+            display: flex;
+            justify-content: normal;
+
+        }
+        .para1 {
+
+            padding-left: 25px;
+            width: 90%;
+
+        }
+
+        .para0 {
+            position: relative;
+            padding-left: 25px;
+            width: 90%;
+
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Separation of Concern</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">IS 601 Web Calculator</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/calculator">Web Calculator</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Result Table</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Articles<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="article_1.html">Python basics and Pylint</a></li>
+                    <li><a href="article_2.html">AAA Testing</a></li>
+                    <li><a href="article_3.html">OOPs in Python</a></li>
+                    <li><a href="article_4.html">Separation of Concern</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<div class="para0">
+    <h1>Separation of Concerns: Clean coding practices</h1>
+</div>
+
+<div class="al">
+    <img class="image" src="https://i.ibb.co/Pt4dHpQ/6lz8trsa9ct37hnui2tz-2.jpg" alt="IOT">
+</div>
+<br>
+<div class="para1">
+
+    <p style="font-size:19px">
+        A cornerstone of clear code is the division of its various behaviors into small, manageable pieces.
+        Clear code requires you to keep less knowledge in your head at any given time, making the code simpler to
+        reason about. Short segments of code with clear intent are a big step in this direction, but bits of code
+        should not be broken up along arbitrary boundaries. Separating them by concern is an effective approach.
+        <br>
+        A <b><em>concern</em></b> is a distinct behavior or piece of knowledge your software deals with. Concerns can range
+        in granularity from how to calculate a square root to how payments are managed in an e-commerce system.
+    </p>
+
+    <p style="font-size:19px">
+        One way to distinguish separate concerns is to follow the Unix philosophy of “do one thing and do it well.”<br>
+        When a particular function or class in your code is concerned with a single behavior, you can improve it independent of
+        the code that uses it. In contrast, if behaviors are duplicated and mixed together throughout your code, it may be difficult
+        to update a particular behavior without thinking about—and in the worst case, breaking—several other behaviors.
+        Many functions on a website, for example, might rely on information from the currently authenticated user.
+        If they all check authentication and fetch information about that user themselves, they’ll all need to be updated when
+        the details about authentication change. That’s a lot of work, and if one function is missed, it may start doing unexpected
+        things or stop working altogether.
+        <br>
+
+        Separation of Concern at the grass root level is the Single Responsibility principle in SOLID.
+        <br>
+        <h3>Value of Separation of Concern</h3>
+
+    </p>
+    <p style="font-size:19px">
+    Applying the principle of separation of concerns to software design can result in a number of residual benefits.
+    <b>First</b>, the lack of duplication and singularity of purpose of the individual components render the overall system easier to
+    maintain. <b>Second</b>, the system as a whole becomes more stable as a byproduct of the increased maintainability.
+    <b>Third</b>, the strategies required to ensure each component only concerns itself with a single set of cohesive responsibilities
+    often result in natural extensibility points. <b>Forth</b>, the decoupling which results from requiring components to focus
+    on a single purpose leads to components which are more easily reused in other systems, or different contexts within the same system. Fifth, the increase in maintainability and extensibility can have a major impact on the marketability and adoption rate of the system.
+    </p>
+
+    <h3>Separation of Concern in Calculator Program</h3>
+</div>
+<div class="para1">
+    <p style="font-size:19px">
+        SOC is used in the Calculator Program such that the program is broken into distinct features that overlap
+        in functionality as little as possible. We have broken the original problem of creating a Calculator
+        to perform Addition into four independent tasks:<br>
+        <br><b>Calculation class with abstract method with encapsulation to define the input values</b>
+    </p>
+</div>
+
+<div class="al">
+    <img class="image" src="https://i.ibb.co/BggLb3F/abs-encap.png" alt="unittest">
+</div>
+
+<div class="para1">
+    <p style="font-size:19px">
+        <br><b>Addition class that adds two or more numbers</b>
+    </p>
+</div>
+
+<div class="al">
+    <img class="image" src="https://i.ibb.co/hHdKmJD/soc-add.png" alt="IOT">
+</div>
+
+
+<div class="para1">
+<p style="font-size:19px">
+    <br><b>Function to add the Calculation to history</b>
+</p>
+</div>
+
+<div class="al">
+    <img class="image" src="https://i.ibb.co/gr2vd2j/add-cal-soc.png" alt="IOT">
+</div>
+
+
+
+<div class="para1">
+    <p style="font-size:19px">
+        <br><b>Calculator class that performs Addition as well as stores the value in the history</b>
+    </p>
+</div>
+
+<div class="al">
+    <img class="image" src="https://i.ibb.co/j68zfv3/calculator-add.png" alt="IOT">
+</div>
+
+<div class="para1">
+    <p style="font-size:19px">
+        In all the above four, all the classes have been
+        separated by function, the get_result is first defined in a different class Calculation and then gives us the result of the addition, the add_calculation adds the calculation to history
+        and the add_numbers function calls the other two functions together to finally create the proper calculator
+        functionality. The four separate classes come together to form the Calculator program, but each action or concern
+        is being handled separately and independently
+        <br>
+        Here it is obvious that the functions have been separated by their concern i.e. their duty, and each of these functions can be reused
+        as well as easily modified to accommodate any other new changes or functionality
+    </p>
+</div>
+<div class="para1">
+    <p style="font-size:19px">
+        The <b>Single Responsibility Principle</b> is also something that on a class/object level is the same as Separation of Concern,
+        however the SoC is not limited to Architecture Layers, it’s also applied on many other things, such as:
+        an object that could represent a concern from language point view, SOA can separate concerns into services,
+        separating behaviour as concern in logical units.
+    </p>
+</div>
+
+<div class ="para0"><br>
+    <p1 style="font-size:21px">
+    <b>The complete code can be accessed on <a href="https://github.com/madhurima309/calc2">Calculator Github</a></b>
+    </p1>
+</div><br><br>
+<div class="footer">
+
+    <p> <a href="https://validator.w3.org/">W3C Validator</a><br>
+        &copy;<a href="https://github.com/madhurima309/calc2/tree/python_calc">Github</a>
+
+    </p>
+</div>
+
+</body>
+</html>

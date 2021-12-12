@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <style>
+        * {box-sizing: border-box;}
+
+        body {
+
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url(https://cdn.pixabay.com/photo/2017/02/18/01/26/background-2076334_1280.jpg);
+            background-size: cover;
+            height: 100%;
+
+
+        }
+
+        .footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: black;
+            text-align: center;
+        }
+        @media screen and (max-width: 650px) {
+            .nav,  .footer, .para1, .image, .container-fluid, .para0{
+                width: 100%;
+                display: block;
+                flex-direction: column;
+            }
+        }
+
+
+
+
+        .image {
+            padding-left: 25px;
+            width: 90%;
+
+        }
+        .al{
+            display: flex;
+            justify-content: normal;
+
+        }
+        .para1 {
+            position: relative;
+            padding-left: 25px;
+            width: 90%;
+        }
+        .container-fluid{
+            background-color: black;
+        }
+        .para0 {
+            position: relative;
+            padding-left: 25px;
+            width: 90%;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>AAA testing</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">IS 601 Web Calculator</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/calculator">Web Calculator</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Result Table</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Articles<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="article_1.html">Python basics and Pylint</a></li>
+                    <li><a href="article_2.html">AAA Testing</a></li>
+                    <li><a href="article_3.html">OOPs in Python</a></li>
+                    <li><a href="article_4.html">Separation of Concern</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<div class="para0">
+    <h1>Making Better Unit Tests: AAA Pattern</h1>
+</div>
+
+<div class="al">
+    <img class="image" src="https://geekflare.com/wp-content/uploads/2021/11/python-unittest.png" alt="unittest">
+</div>
+
+<div class="para1">
+    <h3>What is Unit Testing?</h3>
+    <p style="font-size:19px">
+    Unit testing is one of the software testing types which includes the initial testing phase where the smallest components
+    or the modules of a software are tested individually. With this method of testing, both testers and developers can isolate
+    each module, identify and fix the system defects at a very early stage of the software development lifecycle (SDLC).
+    Primarily, a unit test verifies different behavioral aspects of the system under test and can be broadly classified
+    into state-based and interaction-based unit testing.<br>
+    A typical unit test consists of three phases which include the first initialization phase where it initializes a small
+    piece of an application it wants to test. The second phase is the addition phase where it adds a stimulus to the system
+    under test and finally, the third phase is the result phase where it observes the resulting application behavior.
+    Evidently, if the observed behavior is consistent with expectations, then the unit test passes else it fails.
+    This indicates there is a problem somewhere in the system under test. These three test phases are named as Arrange,
+    Act and Assert or commonly known as AAA.
+
+    </p>
+    <h3>Arrange Act Assert</h3>
+    <p style="font-size:19px">
+        The 3A pattern is simple and provides a uniform structure for all tests in the suite. This uniform structure
+        is one of its biggest advantages: once you get used to this pattern, you can read and understand the tests more
+        easily. That, in turn, reduces the maintenance cost for your entire test suite.<br>
+    <ul style="font-size:18px">
+        <li><em>The arrange section</em> is where you set up the objects to be tested. You bring the system under test to a desired state and configure the dependencies: either instantiate them directly or prepare their test doubles.</li>
+        <li><em>The act section</em> is where you act upon the system under test. You call one of its methods: pass the dependencies and capture the output value if any.</li>
+        <li><em>The assert section</em> allows you to make the claims about the outcome. This may include the return value, the final state of the SUT and its collaborators, or the methods the SUT called on them.</li>
+    </ul>
+    </p>
+    <h3>AAA structured test case walk through</h3>
+    <p style="font-size:19px">
+        This is the simple pattern in the structure of every unit test. The following is a Calculator class with a single
+        method which calculates a sum of two numbers. The Calculator class will then be imported in the unit test and will be used to test
+        the addition of two numbers using AAA pattern.
+    </p>
+
+
+</div>
+<div class="al">
+    <img class="image" src="https://i.ibb.co/10vm4N6/class.png" alt="add class">
+</div>
+<br><br>
+<div class="para0">
+    <p style="font-size:19px">
+The below Listing shows how we can test the above calculator class implementation using the arrange, act and assert structure.
+    This structure keeps the code clean and easy to read. This test may seem easy and trivial, but we can use it to illustrate
+        our pattern. We can see the comments denoting each of the AAA patterns.<br>
+        Arrange-Act-Assert is powerful because it is simple. It forces tests to focus on independent, individual behaviors.
+        It separates setup actions from the main actions. It requires test to make verifications and not merely run through motions.
+</div>
+
+
+<div class="al">
+    <img class="image" src="https://i.ibb.co/WvNrnbX/AAA.png" alt="AAA test">
+</div>
+<br>
+<div class="para0">
+    <p style="font-size:19px">
+        Behavior-Driven Development follows the Arrange-Act-Assert pattern.
+    </p>
+    <ol style="font-size:18px">
+    <li>The <em>Arrange </em>step assigns values to “value_a” and “value_b” variable.</li>
+    <li>The <em>Act </em>step calls the “add_number” function using the “value_a” and “value_b” variable and stores the returned value
+        in a variable named “addition”.</li>
+    <li>The <em>Assert </em>step verifies that “addition” is the sum of “value_a” and “value_b”.</li>
+    </ol>
+    <p style="font-size:19px">
+        The natural inclination is to start writing the test with the Arrange section. After all, it comes before the other two.
+        And this approach works well in the vast majority of cases. But starting with the Assert section is a viable option too.
+        If you practice Test-Driven Development, i.e. when you write a test before the production code, you don’t necessarily
+        know enough about a given feature’s behavior, which can lead to the creation of a faulty test. It is advantageous to first
+        outline what you expect from the behavior and then figure out how to develop the system to meet this expectation.
+        The Code used for the demonstration of the above unit test can be found <a href="https://github.com/madhurima309/calc2">here</a>
+    </p>
+</div>
+
+<div class="para0">
+    <h3>External Data for Testing</h3>
+    <p style="font-size:19px">
+     For the purpose of unit testing, aside from the AAA pattern, the other important factor is test data. data for testing is a
+        crucial requirement that needs to be fulfilled for a successful Software Development Cycle. Working with a data set
+        in product development often requires changes such as editing, moving, adding or deleting data. Because of this,
+        running tests on hard-coded data each time can become challenging. Testers have to create multiple test scripts or
+        modify existing tests multiple times and run them individually. Such tasks can easily become boring and cumbersome,
+        also affecting the pace of development.
+        <br><b>Demonstrating on the above referenced Calculator class, below is the sample external data in the form of a .CSV file.</b>
+
+    </p>
+
+</div>
+<div class="al">
+    <img class="image" src="https://i.ibb.co/58Zt8jW/fgf.png" alt="data">
+</div>
+
+<div class="para0">
+    <p style="font-size:19px">
+        The above file is a comma seperated (.csv) file, which is the most common type of file used in testing. A .csv file
+        can be read using pandas in python. pd.read_csv is the command used to read from a .csv file to a dataframe. The values in the
+        dataframe can then be used to perform testing operations. As we can see below, we have created a function to read any .csv file.
+    </p>
+
+
+</div>
+<div class="al">
+    <img class="image" src="https://i.ibb.co/ns83BLG/file-read.png" alt="data">
+</div>
+
+<div class="para0">
+    <p style="font-size:19px">
+       Here we have imported the packages os and pandas, os package helps in defining the path where the file is present, whereas
+        we can use the pandas package to read the .csv file. We can now use this read_from_file function to read any .csv file and use
+        it for our unit test cases. Further we can always add or delete values from the files without touching the code.<br>
+        Below we have the AAA pattern test case using external data.
+    </p>
+</div>
+
+<div class="al">
+    <img class="image" src="https://i.ibb.co/gJWyjFq/AAA-read.png" alt="data">
+</div>
+<div class="para0">
+    <p style="font-size:19px">
+       In the above example, we again perform the Arrange, Act, Assert pattern testing, but this time, we use external data for the same.
+        The value_a, value_b and addition_result are specified using the index of the dataframe. The whole function can be looped to test all
+        the rows of the dataframe. The source code for the above demonstration using external data for testing can be found <a href="https://github.com/madhurima309/calc2">here</a>.
+    </p>
+</div>
+
+<div class ="para0"><br>
+    <p1 style="font-size:21px">
+        <b>The complete code can be accessed on <a href="https://github.com/madhurima309/calc2">Calculator Github</a></b>
+    </p1>
+</div><br><br>
+
+<div class="footer">
+
+   <p> <a href="https://validator.w3.org/">W3C Validator</a><br>
+        &copy;<a href="https://github.com/madhurima309/calc2/tree/python_calc">Github</a>
+    </p>
+</div>
+
+</body>
+</html>

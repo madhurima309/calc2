@@ -1,21 +1,31 @@
 """A simple flask web app"""
-from flask import Flask
+from flask import Flask, request
 from app.controllers.index_controller import IndexController
-from app.controllers.calculator_controller import CalculatorController
-from werkzeug.debug import DebuggedApplication
-
+from app.controllers.calculator_controller import CalcController
+from app.controllers.result_controller import ResultController
+from app.controllers.article_controller import articleController
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
-app.wsgi_app = DebuggedApplication(app.wsgi_app, True)
 
 @app.route("/", methods=['GET'])
 def index_get():
+    """index routing to controller"""
     return IndexController.get()
 
-@app.route("/calculator", methods=['GET'])
-def calculator_get():
-    return CalculatorController.get()
+@app.route("/Results Table", methods=['GET'])
+def result_get():
+    """result page routing to controller"""
+    return ResultController.get()
 
-@app.route("/calculator", methods=['POST'])
+@app.route("/opps", methods=['GET'])
+def ooppage_get():
+    """OOP page routing to controller"""
+    return articleController.get()
+
+@app.route("/calculator1", methods=['GET'])
+def calculator_get():
+    return CalcController.get()
+
+@app.route("/calculator1", methods=['POST'])
 def calculator_post():
-    return CalculatorController.post()
+    return CalcController.post()

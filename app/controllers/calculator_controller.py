@@ -1,60 +1,33 @@
-from app.controllers.controller import ControllerBase
-from calc.calculator import Calculator
-from flask import render_template, request, flash, redirect, url_for, session
+import pandas as pd
+from app.controllers.controller import BaseController
+from calc_mod.calculator import Calculator
+from calc_mod.history.calculations import Calculations
+from tests.readcsv import Read
+from flask import render_template, request, flash, redirect, url_for
 
-
-class CalculatorController(ControllerBase):
+class CalcController(BaseController):
     @staticmethod
     def post():
         if request.form['value1'] == '' or request.form['value2'] == '':
-            error = 'You must enter a value for value 1 and or value 2'
+            flash("Please enter a valid value")
+        elif request.form['value2'] == '0' and request.form['operation'] == 'division':
+            flash("Division by zero not possible!")
         else:
-            Calculator.getHistoryFromCSV()
-            flash('You successfully calculated')
-            # get the values out of the form
+            flash('Successful Calculation')
+
             value1 = request.form['value1']
             value2 = request.form['value2']
             operation = request.form['operation']
-            # make the tuple
+
             my_tuple = (value1, value2)
-            # this will call the correct operation
+
             getattr(Calculator, operation)(my_tuple)
-            result = str(Calculator.get_last_result_value())
-            # Hey if you copy this it will not work you need to think about it
-            data = {
-                'value1': [value1],
-                'value2': [value2],
-                'operation': [operation]
-            }
-            Calculator.writeHistoryToCSV()
-            return render_template('result.html', data=Calculator.getHistory(), value1=value1, value2=value2, operation=operation, result=result)
-        return render_template('calculator.html', error=error)
+            result = str(Calculations.get_last_calculation_actual_value())
+            Calculations.create_dataframe_to_write(value1, value2, result, operation)
+            df = Read.csvreader()
+
+            return render_template('result.html', value1=value1, value2=value2, operation=operation, result=result, tables=[df.to_html(classes='data')], titles=df.columns.values, row_data=list(df.values.tolist()), zip=zip)
+        return render_template('calculator1.html')
     @staticmethod
     def get():
-        return render_template('calculator.html')
-
-
-    """
-    The easy calculator solution
-    1.  fix your calculator to read and write calculations to the csv
-    2.  fix the controller to read the the csv to history first
-    3.  Fix the controller to write the history to csv after you add the calculation to history
-    4.  Make a method on the calculator to return the history in the format you want to print in the template
-    
-    Optional
-       Fix it so that you store the type of calculation and perform the calulation at runtime, 
-       so you don't store the raw result
-       
-       IF you want to be fancy you can change the delimeter for the file to semicolon and write your tuple of value to the file
-       
-       Values, Operation
-       1,2,3,4; Addition
-       1,2,3,4; Addition
-    
-    """
-
-
-
-
-
-
+        return render_template('calculator1.html')

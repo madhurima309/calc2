@@ -1,7 +1,7 @@
 from app.controllers.controller import BaseController
 from flask import render_template
 
-class IndexController(BaseController):
+class articleController(BaseController):
     @staticmethod
     def get():
-        return render_template('index.html')
+        return render_template('opps.html')

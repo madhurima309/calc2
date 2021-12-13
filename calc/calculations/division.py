@@ -1,6 +1,7 @@
 """Division Class"""
 from calc.calculations.calculation import Calculation
 
+
 class Division(Calculation):
     """calculation division class"""
 

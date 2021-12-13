@@ -1,40 +1,31 @@
-""" This is the increment function"""
-from calc.history.calculations import Calculations
+"""This is the increment function"""
 
-#the calculator class just contains the methods to calculate
+from calc_mod.history.calculations import Calculations
+# pylint: disable=line-too-long
+
 class Calculator:
-    """ This is the Calculator class"""
-    #the calculator class just calls methods on Calculations class
+    """This is the Calculator Class which calls the Calculations class to perform calculator duties"""
+
     @staticmethod
-    def get_last_result_value():
-        """ This is the gets the result of the calculation"""
-        # I made this method so that I don't have more than one action per function
-        return Calculations.get_last_calculation_result_value()
-    @staticmethod
-    #tuple allows me to pass in as many values as a I want
-    def addition(tuple_values: tuple):
-        """ adds list of numbers"""
-        Calculations.add_addition_calculation_to_history(tuple_values)
+    def addition(values_assigned_to_tuple: tuple):
+        """adds list of numbers"""
+        Calculations.addition_calculation(values_assigned_to_tuple)
         return True
+
     @staticmethod
-    def subtraction(tuple_values: tuple):
-        """ subtract a list of numbers from result"""
-        Calculations.add_subtraction_calculation_to_history(tuple_values)
+    def subtraction(values_assigned_to_tuple: tuple):
+        """subtract list of numbers"""
+        Calculations.subtraction_calculation(values_assigned_to_tuple)
         return True
+
     @staticmethod
-    def multiplication(tuple_values: tuple):
-        """ multiplication number from result"""
-        Calculations.add_multiplication_calculation_to_history(tuple_values)
+    def multiplication(values_assigned_to_tuple: tuple):
+        """multiplication numbers from result"""
+        Calculations.multiplication_calculation(values_assigned_to_tuple)
         return True
+
     @staticmethod
-    def getHistory():
-        """ Get history """
-        return Calculations.history
-    @staticmethod
-    def getHistoryFromCSV():
-        """ Get history """
-        return Calculations.readHistoryFromCSV()
-    @staticmethod
-    def writeHistoryToCSV():
-        """ Get history """
-        return Calculations.writeHistoryToCSV()
+    def division(values_assigned_to_tuple: tuple):
+        """divide numbers from result"""
+        Calculations.division_calculation(values_assigned_to_tuple)
+        return True

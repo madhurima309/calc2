@@ -1,62 +1,86 @@
-"""Calculation history Class"""
+"""Calculations history class"""
+import pandas as pd
 from calc.calculations.addition import Addition
 from calc.calculations.subtraction import Subtraction
 from calc.calculations.multiplication import Multiplication
 from calc.calculations.division import Division
+from tests.csvread_writer import csv_write
+
+
 class Calculations:
-    """Calculations class manages the history of calculations"""
+    """Class with fundamental methods to operate calculator"""
+
     history = []
 
     @staticmethod
-    def readHistoryFromCSV():
-        """Read the history from csv and put it into the history """
-    @staticmethod
-    def writeHistoryToCSV():
-        """Write the history to csv file"""
-    # pylint: disable=too-few-public-methods
-    @staticmethod
     def clear_history():
-        """clear the history of calculations"""
+        """clears history"""
         Calculations.history.clear()
         return True
+
     @staticmethod
     def count_history():
-        """get number of items in history"""
+        """counts number of calculations in history"""
         return len(Calculations.history)
+
     @staticmethod
-    def get_last_calculation_object():
-        """get last calculation"""
-        return Calculations.history[-1]
+    def get_last_calculation():
+        """gets latest calculation from user as an object"""
+        return Calculations.history[0]
+
     @staticmethod
-    def get_last_calculation_result_value():
-        """get last calculation"""
-        calculation = Calculations.get_last_calculation_object()
-        return calculation.get_result()
+    def get_last_calculation_actual_value():
+        """gets latest calculation from user as a result"""
+        return Calculations.get_last_calculation().get_result()
+
+
     @staticmethod
     def get_first_calculation():
-        """get first calculation"""
+        """gets first calculation from user"""
         return Calculations.history[0]
+
     @staticmethod
     def get_calculation(num):
-        """ get a specific calculation from history"""
+        """get a specific calculation from history input index"""
         return Calculations.history[num]
+
     @staticmethod
-    def add_calculation(calculation):
-        """ get a generic calculation from history"""
-        return Calculations.history.append(calculation)
+    def add_calculation(inserted_calculation):
+        """append calculation from history"""
+        Calculations.clear_history()
+        return Calculations.history.append(inserted_calculation)
+
     @staticmethod
-    def add_addition_calculation_to_history(values):
-        """create an addition and add object to history using factory method create"""
+    def addition_calculation(values):  # pass list of values
+        """add Addition to history by creating addition calculation object using factory method"""
         Calculations.add_calculation(Addition.create(values))
-        #Get the result of the calculation
-        return True
+        return Calculations.history[-1]  # return the result of the addition from the history
+
     @staticmethod
-    def add_subtraction_calculation_to_history(values):
-        """create a subtraction object to history using factory method create"""
-        Calculations.add_calculation(Subtraction.create(values))
-        return True
-    @staticmethod
-    def add_multiplication_calculation_to_history(values):
-        """Add a multiplication object to history using factory method create"""
+    def multiplication_calculation(values):
+        """add Multiplication to history by creating addition calculation object using factory method"""
         Calculations.add_calculation(Multiplication.create(values))
-        return True
+        return Calculations.history[-1]
+
+    @staticmethod
+    def subtraction_calculation(values):
+        """add Subtraction to history by creating addition calculation object using factory method"""
+        Calculations.add_calculation(Subtraction.create(values))
+        return Calculations.history[-1]
+
+    @staticmethod
+    def division_calculation(values):
+        """add Division to history by creating addition calculation object using factory method"""
+        Calculations.add_calculation(Division.create(values))
+        return Calculations.history[-1]
+
+    @staticmethod
+    def create_dataframe_to_write(val1, val2, result, operation):
+        """appends values and operation to history"""
+        df_to_write = pd.DataFrame(columns=['Value 1', 'Value 2', 'Result', 'Operation'])
+        df_to_write = df_to_write.append({'Value 1': val1,
+                                          'Value 2': val2,
+                                          'Result': result,
+                                          'Operation': operation},
+                                         ignore_index=True)
+        return csv_write(df_to_write)

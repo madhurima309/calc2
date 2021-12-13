@@ -3,21 +3,7 @@
 
 {% block content %}
 <div style="padding: 20px">
-    <h1>Calculation Results</h1>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-success" role="alert">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-    <strong>Value 1: </strong> {{ value1 }} <br>
-    <strong>Value 2: </strong> {{ value2 }} <br>
-    <strong>Operation: </strong> {{ operation }} <br>
-    <strong>Result: </strong> {{ result }} <br>
-    <button onclick="document.location='/calculator1'"> Go back </button>
+    <h1>Table of Results</h1>
 
     <br>
     <br>

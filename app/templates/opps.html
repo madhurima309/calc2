@@ -1,0 +1,276 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+
+{% block content %}
+
+<style>
+        * {box-sizing: border-box;}
+
+        body {
+
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url(https://cdn.pixabay.com/photo/2017/02/18/01/26/background-2076334_1280.jpg);
+            background-size: cover;
+            height: 100%;
+
+
+        }
+        .container-fluid{
+            background-color: black;
+        }
+        .footer {
+            position: relative;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: black;
+            text-align: center;
+        }
+        @media screen and (max-width: 650px) {
+            .nav,  .footer, .image, .container-fluid, .para0{
+                width: 100%;
+                display: block;
+                flex-direction: column;
+            }
+        }
+
+
+
+
+        .image {
+            padding-left: 25px;
+            width: 90%;
+
+
+        }
+        .al{
+            display: flex;
+            justify-content: normal;
+
+        }
+
+
+        .para0 {
+            position: relative;
+            padding-left: 25px;
+            width: 90%;
+        }
+    </style>
+
+
+<div class="para0">
+    <h1>Basic Concepts of Object-Oriented Programming in Python</h1>
+</div>
+
+<div class="al">
+    <img class="image" src="https://cdn-images-1.medium.com/fit/t/1600/480/1*PoQAqKyCfCajVmKnlgRNiA.jpeg" alt="unittest">
+</div>
+
+<br>
+
+<div class="para0">
+    <p style="font-size:19px">
+        <b>Object-Oriented Programming(OOP)</b>, is all about creating “objects”. An object is a group of interrelated variables
+        and functions. These variables are often referred to as properties of the object and functions are referred to as
+        the behavior of the objects. These objects provide a better and clear structure for the program.
+        <br>For example, a car can be an object. If we consider the car as an object then its properties would be – its color,
+        its model, its price, its brand, etc. And its behavior/function would be acceleration, slowing down, gear change.
+        Another example- If we consider a dog as an object then its properties would be- his color, his breed, his name,
+        his weight, etc. And his behavior/function would be walking, barking, playing, etc.
+        Object-Oriented programming is famous because it implements the real-world entities like objects, hiding, inheritance,
+        etc in programming. It makes visualization easier because it is close to real-world scenarios.
+        <br>
+        To know the basic OOPs terminology, refer <a href="article_1.html">Article 1</a>
+
+    </p>
+
+
+    <p style="font-size:19px">
+        <b>Main Concepts of Object-Oriented Programming (OOPs)</b>
+    <ul style="font-size:19px">
+    <li>Encapsulation: Grouping of Information</li>
+    <li>Inheritance: Sharing of Information</li>
+    <li>Polymorphism: Redefining of Information</li>
+    <li>Abstraction: Hiding of Information</li>
+    </ul>
+    </p>
+</div>
+
+<div class="para0">
+    <h3>Encapsulation</h3>
+    <p style="font-size:19px">
+        Encapsulation is one of the fundamental concepts in object-oriented programming (OOP). It describes the idea of
+        wrapping data and the methods that work on data within one unit. This puts restrictions on accessing variables and
+        methods directly and can prevent the accidental modification of data. To prevent accidental change, an object’s
+        variable can only be changed by an object’s method. Those types of variables are known as private variable.
+        <br>
+        Protected members (in C++ and JAVA) are those members of the class that cannot be accessed outside the class but
+        can be accessed from within the class and its subclasses. To accomplish this in Python, just follow the convention
+        by prefixing the name of the member by underscore “_”.
+
+        <br>
+        <b>Example of Encapsulation using the Calculation Class in Calculator Program</b>
+
+    </p>
+
+</div>
+
+
+<div class="al">
+    <img class="image" src="https://i.ibb.co/BggLb3F/abs-encap.png" alt="unittest">
+</div>
+<br>
+<div class="para0">
+    <p style="font-size:19px">
+    In the Calculation class of the Calculator program, we are using the def __init__ which is a reserved method in
+        python classes. It is called as a constructor in object-oriented terminology. This method is called when an
+        object is created from a class, and it allows the class to initialize the attributes of the class.<br>
+        When a single "_" is used, that signifies a private variable, as we cannot explicitly define private in Python.
+        The "_values" is the nomenclature for encapsulation in the Calculation class.<br>
+        We set the values as a tuple which means that they cannot be changed once applied.
+        The values in the calculation class cannot be changed
+        from outside and thus the above example clearly demonstrates Encapsulation
+
+    </p>
+</div>
+
+
+<div class="para0">
+    <h3>Inheritance</h3>
+    <p style="font-size:19px">
+        Inheritance is the capability of one class to derive or inherit the properties from another class.
+        Inheritance provides re-usability of a code. We don’t have to write the same code again and again. Also,
+        it allows us to add more features to a class without modifying it. It is also transitive in nature, which
+        means that if class B inherits from another class A, then all the subclasses of B would automatically inherit
+        from class A.
+        <br>
+
+        <br>
+        <b>Example of Encapsulation using the Addition Class in Calculator Program</b>
+
+    </p>
+
+</div>
+
+
+<div class="al">
+    <img class="image" src="https://i.ibb.co/bNY6zH5/Addition-class.png" alt="unittest">
+</div>
+<br>
+<div class="para0">
+    <p style="font-size:19px">
+        In the above addition class, we are creating a function that will give us the sum of two or more values. This Addition class
+        can now be inherited in other classes, we would not need to write the code to add two or more numbers again and
+        the class can be inherited in other classes and be reused again and again.<br>
+        <b>Reusing the Addition class in Calculator Class to build a calculator</b>
+
+    </p>
+</div>
+<div class="al">
+    <img class="image" src="https://i.ibb.co/GRStY08/calc-inh.png" alt="unittest">
+</div>
+
+<br>
+<div class="para0">
+    <p style="font-size:19px">
+        Here we can see that the Addition class has been inherited by the Calculator class, and we are able to add two or more
+        numbers in a completely different class i.e. the calculator class. In this case, the Addition class is the Parent class
+        while the Calculator class is the child class.
+        This is especially useful as different classes can be created
+        for each of the calculator functions of addition, subtraction, multiplication and division. And then all of these classes can be
+        inherited by the Calculator class.
+
+    </p>
+</div>
+
+
+<div class="para0">
+<h3>Polymorphism</h3>
+<p style="font-size:19px">
+    The word polymorphism means having many forms. In programming, polymorphism means the same function name
+    (but different signatures) being used for different types.
+    <br>
+    In Python, Polymorphism lets us define methods in the child class that have the same name as the methods in
+    the parent class. In inheritance, the child class inherits the methods from the parent class.
+    <br><br>
+    <b>Example of Polymorphism using the Multiplication Class in Calculator Program</b>
+
+</p>
+
+</div>
+
+
+<div class="al">
+    <img class="image" src="https://i.ibb.co/hCr456F/multipli.png" alt="unittest">
+</div>
+<br>
+<div class="para0">
+    <p style="font-size:19px">
+        <b>Example of Polymorphism using the Subtraction Class in Calculator Program</b>
+    </p>
+</div>
+
+<div class="al">
+    <img class="image" src="https://i.ibb.co/Y8sq9R8/subtract.png" alt="unittest">
+</div>
+<br>
+<div class="para0">
+    <p style="font-size:19px">
+        <b>Example of Polymorphism using the Division Class in Calculator Program</b>
+    </p>
+</div>
+<div class="al">
+    <img class="image" src="https://i.ibb.co/3rDYhbC/div.png" alt="unittest">
+</div>
+<br>
+
+<div class="para0">
+    <p style="font-size:19px">
+        In all the classes i.e. Addition, Subtraction, Multiplication and Division we use the get_result method. The get_result
+        method has been used by all the classes to perform different functions. We can thus see that the get_result function is
+        taking multiple forms. This is the demonstration of Polymorphism in Calculator program.
+    </p>
+</div>
+
+
+
+<div class="para0">
+    <h3>Abstraction</h3>
+    <p style="font-size:19px">
+        An abstract class can be considered as a blueprint for other classes. It allows you to create a set of methods
+        that must be created within any child classes built from the abstract class. A class which contains one or more
+        abstract methods is called an abstract class. An abstract method is a method that has a declaration but does not
+        have an implementation. While we are designing large functional units we use an abstract class. When we want to
+        provide a common interface for different implementations of a component, we use an abstract class.
+        <br>
+        By default, Python does not provide abstract classes. Python comes with a module that provides the base for
+        defining Abstract Base classes(ABC) and that module name is ABC. ABC works by decorating methods of the base class
+        as abstract and then registering concrete classes as implementations of the abstract base. A method becomes abstract
+        when decorated with the keyword @abstractmethod.
+        <br><br>
+        <b>Example of Abstraction using the Calculation Class in Calculator Program</b>
+
+    </p>
+
+</div>
+
+
+<div class="al">
+    <img class="image" src="https://i.ibb.co/ZxpHwD0/abs.png" alt="unittest">
+</div>
+
+<br>
+
+<div class="para0">
+    <p style="font-size:19px">
+        The Calculation class is an abstract base class itself.
+        Here we have created an abstract method i.e. get_result(), which on its own does not give any result, but we saw that
+        the get_result() method is used in the child classes Addition, Subtraction, Multiplication and Division.
+    </p>
+</div>
+<div class ="para0"><br>
+    <p1 style="font-size:21px">
+        <b>The complete code can be accessed on <a href="https://github.com/madhurima309/calc2">Calculator Github</a></b>
+    </p1>
+</div><br><br>
+{% endblock %}
